@@ -1,6 +1,6 @@
 // ProjectCardWrapper.tsx
 import React from 'react';
-import { ThemeProvider } from './theme/ThemeProvider';
+import { ThemeProvider } from './Theme/ThemeProvider';
 import { ProjectCard } from './ProjectCard';
 
 interface Project {
