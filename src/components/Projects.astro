@@ -1,0 +1,66 @@
+---
+import { ProjectCard } from './ProjectCard';
+import ProjectCardWrapper from './ProjectCardWrapper';
+import AnimateIn from './animations/AnimateIn';
+const projects = [
+  {
+    title: "Hokie Event Sphere",
+    description: "Virginia Tech students’ personalized event finder.",
+    image: "/event.png",
+    tags: ["React.js", "Express", "MongoDB"],
+    link: "https://hokie-event-sphere.vercel.app/",
+    github: "https://github.com/ManojDintakurti/HokieEventSphere"
+  },
+  {
+    title: "Shopify",
+    description: "Enhanced an e-commerce platform managing 50,000+ products and 10,000 concurrent customers, achieving 40% faster load times and 60% reduced query response times.",
+    image: "/shopify.png",
+    tags: ["React.js", "Node.js", "MySQL"],
+    github: "https://github.com/ManojDintakurti/shopify-optimized" // Placeholder GitHub
+  },
+  {
+    title: "Article Summarizer",
+    description: "Open-source tool for summarizing lengthy articles into clear, concise summaries.",
+    image: "/sumz.png",
+    tags: ["React.js", "RapidApi", "Redux"],
+    github: "https://github.com/ManojDintakurti/Summarizer"
+  },
+  {
+    title: "Traffic Analysis Using Digital Video Processing",
+    description: "Developed a system for precise vehicle counting via surveillance cameras, enabling 90%+ accuracy and real-time traffic data insights.",
+    image: "/traffic.png",
+    tags: ["Python", "OpenCV", "Flask"],
+  },
+  {
+    title: "Handwritten Text Recognition",
+    description: "Built a mobile application using TensorFlow and Python to scan handwritten text and convert it to digital text with 95% accuracy.",
+    image: "/text-recognition.png",
+    tags: ["Python", "TensorFlow", "Kivy"],
+    github: "https://github.com/manojdintakurti/handwriten_expression_evalution" // Placeholder GitHub
+  }
+];
+---
+
+<section 
+  id="projects"
+  class="py-24 bg-white dark:bg-[#0B1120] transition-colors duration-300"
+>
+  <div class="container mx-auto px-4 max-w-6xl">
+    <AnimateIn client:load animation="fadeIn">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          Featured Projects
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Explore some of my recent work and personal projects
+        </p>
+      </div>
+    </AnimateIn>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <ProjectCardWrapper client:load project={project} index={index} />
+      ))}
+    </div>
+  </div>
+</section>

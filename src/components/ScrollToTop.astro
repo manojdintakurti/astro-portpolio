@@ -1,0 +1,103 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="scroll-to-top"
+  aria-label="Scroll to top"
+  class="fixed bottom-8 right-8 z-50 
+         backdrop-blur-md
+         bg-gray-100/80 dark:bg-gray-800/80
+         border border-gray-200 dark:border-gray-700/30
+         p-3 rounded-xl 
+         text-gray-800 dark:text-gray-200
+         opacity-0 invisible
+         transform translate-y-4
+         transition-all duration-300 ease-out
+         hover:bg-gray-200/90 dark:hover:bg-gray-700/90
+         hover:border-gray-300 dark:hover:border-gray-600
+         hover:-translate-y-1 hover:scale-110
+         shadow-lg hover:shadow-xl
+         group"
+>
+  <div class="relative overflow-hidden rounded-lg">
+    <Icon 
+      name="mdi:chevron-up" 
+      class="w-6 h-6 transition-transform duration-300 ease-out group-hover:-translate-y-0.5"
+    />
+  </div>
+</button>
+
+<script>
+  interface ScrollButtonSetup {
+    (): (() => void) | undefined;
+  }
+
+  const setupScrollButton: ScrollButtonSetup = () => {
+    const scrollButton = document.getElementById('scroll-to-top');
+    if (!scrollButton) return;
+
+    let isAnimating = false;
+    let lastScrollY = window.scrollY;
+
+    const toggleScrollButton = (): void => {
+      if (!isAnimating) {
+        isAnimating = true;
+        window.requestAnimationFrame(() => {
+          const shouldShow = window.scrollY > 200;
+          const isScrollingUp = lastScrollY > window.scrollY;
+
+          scrollButton.classList.toggle('opacity-0', !shouldShow);
+          scrollButton.classList.toggle('invisible', !shouldShow);
+          scrollButton.classList.toggle('translate-y-4', !shouldShow);
+          scrollButton.classList.toggle('scale-95', !isScrollingUp);
+
+          lastScrollY = window.scrollY;
+          isAnimating = false;
+        });
+      }
+    };
+
+    const scrollToTop = (e: Event): void => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    };
+
+    window.addEventListener('scroll', toggleScrollButton, { passive: true });
+    scrollButton.addEventListener('click', scrollToTop);
+
+    toggleScrollButton();
+
+    return () => {
+      window.removeEventListener('scroll', toggleScrollButton);
+      scrollButton.removeEventListener('click', scrollToTop);
+    };
+  };
+
+  let cleanup: (() => void) | undefined = setupScrollButton();
+
+  document.addEventListener('astro:page-load', () => {
+    if (cleanup) cleanup();
+    cleanup = setupScrollButton();
+  });
+</script>
+
+<style>
+  #scroll-to-top {
+    will-change: transform, opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #scroll-to-top {
+      transition: none;
+    }
+    
+    #scroll-to-top * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

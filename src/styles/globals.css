@@ -1,0 +1,84 @@
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  html {
+    @apply cursor-none;
+  }
+
+  button, a, input[type="submit"], [role="button"] {
+    @apply cursor-none;
+  }
+
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white;
+  }
+
+  /* Heading defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 dark:text-white font-bold;
+  }
+
+  /* Paragraph defaults */
+  p {
+    @apply text-gray-600 dark:text-gray-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
+}
+
+/* Theme transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Card hover effects */
+.hover-lift {
+  @apply transition-all duration-300;
+}
+
+.hover-lift:hover {
+  @apply -translate-y-1 shadow-lg;
+}
+
+/* Cursor styles */
+.cursor-dot {
+  @apply bg-current text-gray-800 dark:text-white;
+}
+
+.cursor-ring {
+  @apply border-current text-gray-800 dark:text-white;
+}
+
+/* Disable custom cursor for mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+  html, button, a, input[type="submit"], [role="button"] {
+    @apply cursor-auto;
+  }
+}
+
+
+/* Only show custom cursor on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+.custom-cursor {
+  @apply block;
+}
+}
