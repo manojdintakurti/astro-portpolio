@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 
+
 interface Skill {
   name: string;
   icon: string;
@@ -26,10 +27,13 @@ const skills: SkillCategory[] = [
     description: "Building responsive and interactive user interfaces",
     skills: [
       { name: "React", icon: "logos:react" },
-      { name: "Next.js", icon: "logos:nextjs-icon", className: "dark:invert" },
       { name: "TypeScript", icon: "logos:typescript-icon" },
       { name: "Tailwind", icon: "logos:tailwindcss-icon" },
       { name: "Angular", icon: "logos:angular-icon" },
+      { name: "HTML5", icon: "logos:html-5" },
+      { name: "CSS3", icon: "logos:css-3" },
+      { name: "Bootstrap", icon: "logos:bootstrap" },
+      { name: "jQuery", icon: "logos:jquery" , className: "dark:bg-white dark:p-1 dark:rounded"},
       { name: "Astro", icon: "logos:astro-icon", className: "dark:invert dark:brightness-150 dark:contrast-150" }
     ]
   },
@@ -37,27 +41,73 @@ const skills: SkillCategory[] = [
     category: "Backend Development",
     description: "Creating highly scalable server-side applications",
     skills: [
+      { name: "Java", icon: "logos:java" },
+      { name: "Spring Boot", icon: "logos:spring" },
+      { name: "REST API", icon: "mdi:api", className: "dark:bg-white dark:p-1 dark:rounded"},
       { name: "Node.js", icon: "logos:nodejs-icon" },
       { name: "Python", icon: "logos:python" },
-      { name: "GraphQL", icon: "logos:graphql" },
       { name: "MongoDB", icon: "logos:mongodb-icon" },
-      { name: "PostgreSQL", icon: "logos:postgresql" },
-      { name: "NestJS", icon: "logos:nestjs" }
+      {name: "Express", icon: "logos:express", className: "dark:bg-white dark:p-1 dark:rounded"},
+      { name: "MySQL", icon: "logos:mysql" },
+      {name:"PostgreSQL", icon: "logos:postgresql"}
     ]
   },
   {
-    category: "Tools & DevOps",
+    category: "Cloud & CI/CD Tools",
     description: "Optimizing development and deployment workflows",
     skills: [
-      { name: "Git", icon: "logos:git-icon" },
-      { name: "Docker", icon: "logos:docker-icon" },
       { name: "AWS", icon: "logos:aws", className: "dark:bg-white dark:p-1 dark:rounded" },
-      { name: "Firebase", icon: "logos:firebase" },
+      { name: "Docker", icon: "logos:docker-icon" },
       { name: "Kubernetes", icon: "logos:kubernetes" },
-      { name: "Redis", icon: "logos:redis" }
+      { name: "Git", icon: "logos:git-icon" },
+      { name: "BitBucket", icon: "logos:bitbucket" },
+      { name: "Gradle", icon: "logos:gradle" },
+      { name: "Jenkins", icon: "logos:jenkins" },
+      { name: "Bamboo", icon: "logos:bamboo" },
+      { name: "Postman", icon: "logos:postman-icon" }
     ]
   }
 ];
+
+//
+// const skills: SkillCategory[] = [
+//   {
+//     category: "Frontend Development",
+//     description: "Building responsive and interactive user interfaces",
+//     skills: [
+//       { name: "React", icon: "logos:react" },
+//       { name: "Next.js", icon: "logos:nextjs-icon", className: "dark:invert" },
+//       { name: "TypeScript", icon: "logos:typescript-icon" },
+//       { name: "Tailwind", icon: "logos:tailwindcss-icon" },
+//       { name: "Angular", icon: "logos:angular-icon" },
+//       { name: "Astro", icon: "logos:astro-icon", className: "dark:invert dark:brightness-150 dark:contrast-150" }
+//     ]
+//   },
+//   {
+//     category: "Backend Development",
+//     description: "Creating highly scalable server-side applications",
+//     skills: [
+//       { name: "Node.js", icon: "logos:nodejs-icon" },
+//       { name: "Python", icon: "logos:python" },
+//       { name: "GraphQL", icon: "logos:graphql" },
+//       { name: "MongoDB", icon: "logos:mongodb-icon" },
+//       { name: "PostgreSQL", icon: "logos:postgresql" },
+//       { name: "NestJS", icon: "logos:nestjs" }
+//     ]
+//   },
+//   {
+//     category: "Tools & DevOps",
+//     description: "Optimizing development and deployment workflows",
+//     skills: [
+//       { name: "Git", icon: "logos:git-icon" },
+//       { name: "Docker", icon: "logos:docker-icon" },
+//       { name: "AWS", icon: "logos:aws", className: "dark:bg-white dark:p-1 dark:rounded" },
+//       { name: "Firebase", icon: "logos:firebase" },
+//       { name: "Kubernetes", icon: "logos:kubernetes" },
+//       { name: "Redis", icon: "logos:redis" }
+//     ]
+//   }
+// ];
 
 const achievements: Achievement[] = [
   { 
