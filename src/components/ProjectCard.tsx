@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
-import { useTheme } from './theme/ThemeProvider';
+import { useTheme } from './Theme/ThemeProvider';
 
 interface Project {
   title: string;
